@@ -16,4 +16,9 @@ public class HelloWord {
         System.out.println("hello:"+name);
     }
 
+    public HelloWord  getHelloWord(String name){
+        return  new HelloWord();
+    }
+
+
 }

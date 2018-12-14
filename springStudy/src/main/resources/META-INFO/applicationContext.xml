@@ -8,5 +8,6 @@
         <property name="name" value="spring"> </property>
     </bean>
 
-
+    <!-- 配置spring 的第一个接口Bean -->
+    <bean id="personService" class="com.xp.study.service.impl.PersonServiceImpl"></bean>
 </beans>

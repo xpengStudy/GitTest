@@ -12,7 +12,7 @@ public class HelloWord {
     public String name;
 
 
-    private void hello(){
+    public void hello(){
         System.out.println("hello:"+name);
     }
 

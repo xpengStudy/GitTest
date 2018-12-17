@@ -1,4 +1,4 @@
-package com.xp.study.controller;
+package com.xp.study.pojo;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +18,10 @@ public class HelloWord {
 
     public HelloWord  getHelloWord(String name){
         return  new HelloWord();
+    }
+
+    public  void init(){
+        System.out.println("我 初始化了某些资源 ");
     }
 
 

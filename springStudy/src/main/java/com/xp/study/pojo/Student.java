@@ -1,4 +1,4 @@
-package com.xp.study.controller;
+package com.xp.study.pojo;
 
 import lombok.Getter;
 import lombok.Setter;

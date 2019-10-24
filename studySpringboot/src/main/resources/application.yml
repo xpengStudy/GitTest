@@ -1,7 +1,0 @@
-spring:
-  datasource:
-    url: jdbc:mysql://10.0.85.6:3306/xpengtest
-    username: ldap
-    password: ldap
-    driver-class-name: com.mysql.jdbc.Driver
-

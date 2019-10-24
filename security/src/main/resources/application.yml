@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8888
 spring:
   thymeleaf:
     cache: false
@@ -8,3 +8,14 @@ spring:
     suffix: .html
     encoding: UTF-8
     mode: HTML5
+  ldap:
+    urls: ldap://10.0.85.11:389
+    username: cn=root,dc=sc-troy,dc=com
+    password: rootroot
+    base: dc=sc-troy,dc=com
+    groupBase : ou=Group
+    groupID : ou
+    personBase : ou=People
+    personID : uid
+    aliasID : cn
+    max_num_conn : 20

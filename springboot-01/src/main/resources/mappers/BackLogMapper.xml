@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  springboot  配置 mybatis 的mapper 文件-->
+<mapper namespace="com.xp.springboot01.mapper.BackLogMapper">
+
+
+
+    <!--&lt;!&ndash;设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！&ndash;&gt;-->
+    <!--<resultMap id="BaseResultMap" type="com.boot.domain.User">-->
+        <!--<id column="USER_ID" property="userId" jdbcType="INTEGER" />-->
+        <!--<result column="USER_NAME" property="userName" jdbcType="CHAR" />-->
+        <!--<result column="USER_PASSWORD" property="userPassword" jdbcType="CHAR" />-->
+        <!--<result column="USER_EMAIL" property="userEmail" jdbcType="CHAR" />-->
+    <!--</resultMap>-->
+    <!--&lt;!&ndash; 查询单条记录 &ndash;&gt;-->
+    <!--<select id="selectUserById" parameterType="int" resultMap="BaseResultMap">-->
+        <!--SELECT * FROM t_user WHERE USER_ID = #{userId}-->
+    <!--</select>-->
+
+    <!--   BackLog  对应的 ResultMap
+        需要找对应的类型 可以在    里面去找
+     -->
+
+    <resultMap id="back_log_list" type="com.xp.springboot01.domian.BackLog">
+        <id property="id" column="id" javaType="Integer" jdbcType="INTEGER"></id>
+        <result property="logName" javaType="java.lang.String" jdbcType="VARCHAR" column="log_name"/>
+        <result property="isComplete" javaType="java.lang.Boolean" jdbcType="BIT" column="is_complete"/>
+        <result property="createUserId" javaType="java.lang.Integer" jdbcType="INTEGER" column="create_user"/>
+        <result property="createDate" javaType="java.util.Date" jdbcType="DATE" column="create_date"/>
+        <result property="completeDate" javaType="java.util.Date" jdbcType="DATE" column="complete_date"/>
+        <result property="logType" javaType="java.lang.Integer" jdbcType="INTEGER" column="log_type"/>
+    </resultMap>
+    
+    <!-- 查询所有 的待办列表  -->
+    <select id="findAllBackLog" resultMap="back_log_list" >
+
+        select id,log_name,is_complete,create_user,create_date,complete_date,log_type
+        from   back_log
+        
+    </select>
+
+
+    <!--  新增待办项 -->
+    <insert id="addBackLog" parameterType="BackLog" >
+
+        insert into back_log(log_name,is_complete,create_user,create_date,complete_date,log_type)
+        values (#{logName},#{isComplete},#{createUserId},#{createDate},#{completeDate},#{logType})
+
+    </insert>
+
+
+    <!-- 单个 更新待办事项 -->
+    <update id="updateBackLog" parameterType="BackLog" >
+
+        update  back_log  set  id = #{id}
+
+        <if test="null!=#{logName}">
+          , log_name = #{logName}
+        </if>
+
+        <if test="null!=#{isComplete}">
+            , is_complete = #{isComplete}
+        </if>
+
+        <if test="null!=#{createUser}">
+            , create_user = #{createUser}
+        </if>
+
+        <if test="null!=#{createDate}">
+            , create_date = #{createDate}
+        </if>
+
+        <if test="null!=#{completeDate}">
+            , complete_date = #{completeDate}
+        </if>
+
+        <if test="null!=#{logType}">
+            , log_type = #{logType}
+        </if>
+
+        where   id = #{id}
+    </update>
+
+
+</mapper>
